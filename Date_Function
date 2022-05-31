@@ -1,0 +1,52 @@
+
+Assignments on Date Functions
+
+1.Implement the date functions of SQL.
+
+2.Create the following table and perform the following queries.
+Field	Datatype	Remark
+EmpId	Varchar2(3)	Primary key, Should start with ‘E’
+Ename	Varchar2(25)	Not Null
+DOB	Date	Not Null
+DOJ	Date	Not Null, Should later than DOB
+Salary	Number(7)	Not Null, Should take only +ve value
+Adhar	Number(12)	Unique, should always take 12 digit number
+		
+          
+             create table Emp6( 
+empid varchar(3) primary key, 
+empname varchar(25) not null, 
+dob date not null, 
+doj date not null, 
+salary number(7) not null, 
+adhar number(12) unique, 
+constraint chk check(empid like 'E%'), 
+constraint chk1 check(doj> dob), 
+constraint chk2 check(salary>0), 
+constraint chk3 check(length(adhar)=12) 
+)
+insert into Emp6 values ('E01','VVV','12-jan-99','10-dec-17',10000,123456789888)
+insert into Emp6 values ('E02','MMM','11-feb-01','09-nov-16',11000,124356789000)
+insert into Emp6 values ('E03','PPP','10-mar-01','04-feb-16',12000,765432198763)
+insert into Emp6 values ('E04','YYY','14-apr-03','03-mar-15',12500,368743999999)
+insert into Emp6 values ('E05','XXX','15-apr-02','02-apr-15',13500,765534254364)
+
+
+2.1List the employee details who joined on a particular date. 
+select * from Emp6 where doj='02-APR-15'
+
+
+2.2Write a query to list the employees with Hiredate in the format like February 22, 1991. 
+select empname,to_char(doj,'month dd,yyyy') from Emp6
+
+2.3Write a query to list the employees who joined before 2018.
+select empname from Emp6 where doj<'01-jan-2018'
+
+2.4Write a query to list the employees who joined in the month January.
+select *from Emp6 where to_char(doj,'mon')='jan'
+
+2.5Write a query to list the employees who have joined in the year 2019.
+select *from Emp6 where to_char(doj,'yyyy')=2019
+
+2.6Write a query to list the employee details according to the date of joining (recent joining should come first).
+select *from Emp6 order by doj desc
