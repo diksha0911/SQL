@@ -50,3 +50,9 @@ select *from Emp6 where to_char(doj,'yyyy')=2019
 
 2.6Write a query to list the employee details according to the date of joining (recent joining should come first).
 select *from Emp6 order by doj desc
+
+2.12Display the employee id, Name and Date of birth of all the employees( Note -  if the dob is 3 – jan-1985 then it should be displayed as 3rd January 1985)
+select empid,empname, 
+to_char(dob,'ddth month yyyy') from Emp6
+2.9Write a query to list the employees of id E001 or E10, joined in the year 1991.
+select * from Emp6 where to_char(doj,'YYYY')='1991' AND (empid='E11' OR empid='E10')
