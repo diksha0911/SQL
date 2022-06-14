@@ -1,0 +1,50 @@
+--BASIC PROGRAM
+begin 
+dbms_output.put_line('Hello'); 
+end;
+
+--CASE STATEMENT
+declare grade char(1):='C'; 
+begin 
+case grade 
+when 'A' then dbms_output.put_line('Excellent'); 
+when 'B' then dbms_output.put_line('Very good'); 
+when 'C' then dbms_output.put_line('Well done'); 
+when 'D' then dbms_output.put_line('You passed'); 
+when 'F' then dbms_output.put_line('Better try again'); 
+else dbms_output.put_line('No such grade'); 
+end case; 
+end;
+
+--LOOP
+declare  
+i number:=0; 
+begin 
+loop 
+i:=i+1; 
+exit when i>10; 
+end loop; 
+dbms_output.put_line('Loop exited as the value of I has reached' || ' ' || to_char(i) ); 
+end;
+
+--GOTO STATEMENT
+begin 
+goto second_message; 
+<<first_message>> 
+dbms_output.put_line('Hello'); 
+goto the_end; 
+<<second_message>> 
+dbms_output.put_line('PL/SQL'); 
+goto first_message; 
+<<the_end>> 
+dbms_output.put_line('& good bye'); 
+end; 
+
+--FOR LOOP
+declare i number(3); 
+begin 
+for i in 1..10 
+loop 
+dbms_output.put_line(i); 
+end loop; 
+end; 
