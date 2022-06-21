@@ -1,0 +1,45 @@
+create table customers ( 
+eid number(3), 
+ename varchar(15), 
+credit_limit date 
+)
+
+insert into customers values(10,'XXX','12-jan-2022')
+
+create or replace trigger customers_credit_trg 
+after update or insert of credit_limit 
+on customers 
+declare  
+day_of_month number; 
+begin 
+day_of_month:=extract(day from sysdate); 
+if day_of_month between 21 and 31 then 
+raise_application_error(-20100,'cannot update customer credit from 28th to 31st'); 
+end if; 
+end; 
+
+insert into customers values(55,'LLL','21-jun-22')
+
+create table test 
+( 
+id number(3), 
+name varchar(15))
+
+insert into test values(1,'XYZ')
+insert into test values(2,'ABC')
+
+create or replace trigger tri_t 
+after insert or update or delete on test 
+begin 
+if inserting then 
+dbms_output.put_line('Record inserted successfully'); 
+elsif updating then 
+dbms_output.put_line('Record updated successfully'); 
+elsif deleting then 
+dbms_output.put_line('Record Deleted successfully'); 
+end if; 
+end;
+
+insert into test values(3,'PQR')
+1 row(s) inserted.
+Record inserted successfully
