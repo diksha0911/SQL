@@ -1,0 +1,21 @@
+create table Emp9 
+( 
+id number(4), 
+name varchar(15), 
+salary number(8))
+
+insert into Emp9 values(1,'AAA',50000)
+insert into Emp9 values(2,'SSS',20000)
+
+create or replace procedure Test 
+( 
+eid in number ) as 
+emprec emp9%rowtype; 
+begin 
+select * into emprec from Emp9 where id = eid; 
+dbms_output.put_line(emprec.id || ' ' || emprec.name || '' || emprec.salary); 
+end;
+
+begin 
+Test(2); 
+end;
