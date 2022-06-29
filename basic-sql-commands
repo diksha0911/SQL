@@ -1,0 +1,45 @@
+create table employee 
+(ID number(5),f_name varchar(15),l_name varchar(15),dept varchar(10),salary number(10),doj date,address varchar(20),married char(2))
+insert into employee (ID,f_name,l_name,dept,salary,doj,address,married) 
+values(1,'VINAY','KUMAR','MCA',25000,'27-SEP-01','GHAZIABAD','Y')
+insert into employee (ID,f_name,l_name,dept,salary,doj,address,married) 
+values(2,'SUMAN','VERMA','MCA',15000,'17-OCT-06','MEERUT','Y')
+insert into employee (ID,f_name,l_name,dept,salary,doj,address,married) 
+values(3,'AKASH','SINGH','CS',20000,'15-JAN-05','KANPUR','Y')
+insert into employee (ID,f_name,l_name,dept,salary,doj,address,married) 
+values(4,'SAGAR','KUMAR','IT',20000,'12-FEB-19','GHAZIABAD','N')
+insert into employee (ID,f_name,l_name,dept,salary,doj,address,married) 
+values(5,'ROHAN','SHARMA','CS',21000,'18-SEP-05','GHAZIABAD','')
+insert into employee (ID,f_name,l_name,dept,salary,doj,address,married) 
+values(6,'ROBIN','SINGH','IT',18000,'22-OCT-21','MEERUT','N')
+insert into employee (ID,f_name,l_name,dept,salary,doj,address,married) 
+values(7,'AKASH','RANJAN','CS',22000,'14-NOV-19','GHAZIABAD','')
+
+select *from employee
+
+select *from employee where address='GHAZIABAD'
+
+select distinct dept from employee
+
+select ID,dept,f_name||' '||l_name  from employee
+
+select f_name ||' '|| 'is working in'||' '||dept||' '||'department' from employee
+
+select f_name from employee where doj>'15-JAN-05'
+
+update employee 
+set salary=25000 where ID=2
+
+select ID,f_name,salary*12 AS "Annual Salary" from employee
+
+select ID,f_name,dept,salary+300,doj,address,married from employee
+
+select *from employee where doj BETWEEN '27-SEP-01' AND '12-FEB-19'
+
+select * from employee where dept in('MCA','CS')
+
+select * from employee where dept<>'MCA'
+
+select f_name from employee where f_name like 'RO%'
+
+select *from employee where dept='MCA' AND married='Y'
