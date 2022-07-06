@@ -11,3 +11,11 @@ insert into details values(2,'Bb','20-jun-22','CS',1000);
 insert into details values(3,'Cc','19-may-22','CS',9000);
 insert into details values(4,'Dd','19-jun-22','IT',8000);
 insert into details values(5,'Ee','18-may-22','MCA',7000);
+
+select * from details where dept in('MCA','CS');
+select * from details order by doj desc;
+select dept,count(id) from details group by dept having dept='MCA';
+select distinct(doj) from details;
+select * from details where salary>(select salary from details where name='Dd' );
+
+
